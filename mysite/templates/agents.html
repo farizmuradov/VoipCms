@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+{% load cms_tags %}
+
+{% block title %}{% page_attribute "page_title" %}{% endblock title %}
+
+{% block content %}
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- sidebar starts here -->
+    <div class="sidebar-toggle" id="sidebar">
+        <ul class="nav nav-sidebar">
+            <li>
+                <img id="AgentImage" src="/static/img/avatar.png">
+                <div class="statusIndicator"></div>
+            </li>
+            <li>
+                <div class="agent-bar">
+                    <span id="agent-name">Agent Name</span>
+                    <i class="fa fa-caret-down"></i>
+                    <ul id="agent-bar-menu">
+                        <li id="status-online">
+                            <i class="fa fa-circle" style="color: #6EB005;"></i>
+                            Online
+                        </li>
+                        <li id="status-busy">
+                            <i class="fa fa-circle" style="color: #E9001B;"></i>
+                            Busy
+                        </li>
+                        <hr>
+                        <li id="change-image" data-toggle="modal" data-target="#myModal">Change Image</li>
+                    </ul>
+                </div>
+            </li>
+            <br><br><br><br>
+            <li>
+                <a href="https://voip.buludtech.com/admin">
+                    <i style="font-size:21px" class="fas fa-cogs"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://voip.buludtech.com/en/admin/logout/">
+                    <i style="font-size:25px" class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- sidebar ends here -->
+
+    <!-- main container starts here -->
+    <div class="page-content-toggle" id="page-content-wrapper">
+        <!-- main container ends here -->
+        <div class="container-fluid">
+
+            <!-- row starts here -->
+            <div class="row m-b-2">
+                <div class="col-lg-4">
+                    <div class="card card-block">
+                        <h4 class="card-title">Daily Calls</h4>
+                        <div id="daily-chart"></div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card card-block">
+                        <h4 class="card-title">Weekly Calls</h4>
+                        <div id="weekly-chart"></div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card card-block">
+                        <h4 class="card-title">Monthly Calls</h4>
+                        <div id="monthly-chart"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- row ends here -->
+
+            {% placeholder content %}
+        </div>
+    </div>
+
+    <!-- Peer JS call content hidden starts here -->
+    <div class="pure-u-2-3" id="video-container">
+        <video id="their-video" autoplay></video>
+       <!-- <video id="my-video" muted="true" autoplay></video>.  -->
+    </div>
+    <!-- Peer JS call content hidden ends here -->
+
+    <!-- On call receive hidden block starts here -->
+    <div class="call-modal-block">
+        <div class="call-modal">
+            <div class="row">
+                <h3 id="call-heading">Hi There!</h3>
+            </div>
+            <div class="row">
+                <p id="call-text">It seems you have a call.</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <button type="button" class="btn btn-success btn-block" id="answer-call-btn">Answer</button>
+                </div>
+                <div class="col-lg-6">
+                    <button type="button" class="btn btn-danger btn-block" id="reject-call-btn">Reject</button>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 15px;">
+                <div class="col-lg-12">
+                    <select class="form-control" id="context"></select>
+                    <button type="button" class="btn btn-block" id="forward-call-btn">Forward Call</button>
+                    <button type="button" class="btn btn-block" id="end-call-btn">End Call</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- On call receive hidden block ends here -->
+
+    <!-- Modal starts here -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Upload Profile Picture</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="https://voip.buludtech.com/cgi-bin/uploadprofile" method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="rbt-media-file">Note: The server only supports *.jpg file format.</label>
+                            <input name="file" type="file" class="form-control-file" id="profile-picture">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Upload</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal ends here -->
+   <script src="/static/js/agents.page.js"></script>
+
+    
+
+{% endblock content %}

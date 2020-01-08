@@ -1,0 +1,96 @@
+{% load cms_tags menu_tags sekizai_tags staticfiles %}
+
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+    <!-- all requeired meta tags-->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{% page_attribute 'meta_description' %}">
+    
+    <!-- title of window -->
+    <title>Call Center - {% page_attribute 'page_title' %}</title>
+
+    <!-- all css files should be included here -->
+	<link href="{% static "fonts/font-roboto.css" %}" rel="stylesheet">
+    <link href="{% static "bootstrap/bootstrap4-alpha3.min.css" %}" rel="stylesheet">
+    <link href="{% static "font-awesome/css/font-awesome.min.css" %}" rel="stylesheet">
+    <link href="{% static "themify/themify-icons.css" %}" rel="stylesheet">
+	<link href="{% static "css/style.css" %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script> 
+
+    <!-- all js files should be included here -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://unpkg.com/peerjs@1.0.0/dist/peerjs.min.js" type="text/javascript"></script>
+    <script src="{% static "jquery/jquery-1.12.4.min.js" %}"></script>
+    <script src="{% static "js/cookiehandler.js" %}" type="text/javascript"></script>
+    
+
+    <!-- jQuery script for toggle button starts here -->
+    <script>
+        function sidebarToggleOnClick()
+        {
+            $('#sidebar').toggleClass('sidebar-toggle');
+            $('#page-content-wrapper').toggleClass('page-content-toggle');    
+        }
+    </script>
+	
+	<!-- Added by Fariz  it will disable toolbar by default -->
+	<script>
+       var location_toolbar=0; 
+	   if (window.location.search != "?toolbar_off" ) {
+	      location_toolbar = 1 ;
+		  console.log("ama Current path is  "+window.location.pathname);
+	      if (location_toolbar == 1) {
+		     console.log("Current path is  "+window.location.pathname);
+		     window.top.location.href = "?toolbar_off"
+		    };
+		 } ;
+	</script>
+	<!-- /Added by Fariz  it will disable toolbar by default -->
+
+    <!-- jQuery script for toggle button ends here -->
+
+    <!-- Django-bar toggler script starts here -->
+    <script>
+        $( document ).ready( function() {
+            $('.django-bar-toggler').on( 'click', function() {
+                $('.cms-toolbar').toggle();
+            });
+        })
+    </script>
+    <!-- Django-bar toggler script ends here -->
+    
+    {% render_block "css" %}
+</head>
+<body>
+    {% cms_toolbar %}
+	<!-- top navigation bar starts here -->
+	<nav class="navbar navbar-fixed-top" id="header">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<div id="sidebar-toggle-button" onclick="sidebarToggleOnClick()">
+					<i class="ti-menu"></i>
+				</div>
+				<div class="brand">
+					<a href="#">
+						<span class="hidden-xs-down m-r-3">BuludTech Co</span>
+					</a>
+				</div>
+            </div>
+		</div>
+	</nav>
+	<!-- top navigation bar ends here -->
+
+	<!-- contents which are handled by Python - start from here -->
+	{% block content %}
+	
+	{% endblock %}
+	<!-- contents which are handled by Python - end from here -->
+    
+    {% render_block "js" %}
+	
+</body>
+</html>

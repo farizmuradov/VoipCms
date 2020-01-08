@@ -1,0 +1,103 @@
+body
+{
+    background-color: #EBF4FD;
+    font-family: 'Roboto', sans-serif;
+}
+*
+{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+.dashboard
+{
+    width: 100vw;
+    height: 100vh
+}
+.dashboard > .sidebar
+{
+    float: left;
+    height: 100%;
+    width: 70px;
+    background-image: linear-gradient(#0884DA, #007EE5);
+}
+
+.toggle-sidebar { width: 300px !important; }
+.toggle-title { display: block !important; }
+
+.dashboard > .sidebar > ul
+{
+    width: 100%;
+    height: auto;
+    text-decoration: none;
+}
+.dashboard > .sidebar > ul > li
+{
+    width: 100%;
+    height: 70px;
+    line-height: 70px;
+}
+.dashboard > .sidebar > ul > li > a
+{
+    color: #78BAEE;
+    text-decoration: none;
+}
+.dashboard > .sidebar > ul > li > a > .icon
+{
+    float: left;
+    width: 70px;
+    font-size: 1.2em;
+    text-align: center;
+}
+#toggle { float: right; }
+.dashboard > .sidebar > ul > li > a > .title
+{
+    float: left;
+    display: none;
+    font-size: 1em;
+    width: calc(100% - 70px);
+}
+.dashboard > .sidebar > ul> li a:hover > div
+{
+    color: #FFFFFF;
+    background-color: #078FF3;
+}
+.dashboard > .main
+{
+    float: right;
+    height: 100%;
+    width: calc(100% - 70px);
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.toggle-main { width: calc(100% - 300px) !important; }
+
+.main > .header
+{
+    width: 100%;
+    height: 80px;
+    color: #6C7379;
+    line-height: 80px;
+    padding: 0px 20px;
+    font-weight: 100;
+    border-bottom: 1px solid #EEF2F3;
+}
+.main > .body
+{
+    width: 100%;
+    padding: 20px 20px;
+    height: calc(100% - 80px);
+}
+#statistic-by-agent
+{
+    width: 100%;
+}
+.x25
+{
+    float: left;
+    width: 25%;
+}
+.donut
+{
+    width: 100%;
+}

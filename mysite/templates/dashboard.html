@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% load cms_tags %}
+
+{% block title %}{% page_attribute "page_title" %}{% endblock title %}
+
+{% block content %}
+    <!-- sidebar starts here -->
+		
+
+	<div class="sidebar-toggle" id="sidebar">
+        <ul class="nav nav-sidebar">
+            <li>
+                <a href="https://voip.buludtech.com">
+                    <i style="font-size:21px" class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://voip.buludtech.com/reports">
+                    <!-- <i class="ti ti-bar-chart"></i>  -->
+					<i style="font-size:23px" class="fas fa-chart-bar"></i>
+                    <span>Reports</span>
+                </a>
+            </li>
+			<li>
+                <a href="https://voip.buludtech.com/ClientScipt.zip">
+				<i class="fa fa-file" style="font-size:24px"></i>
+                    <span>&nbspClient script</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://voip.buludtech.com/en/settings/">
+                    <i style="font-size:21px" class="fas fa-cogs"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://voip.buludtech.com/en/admin/logout/">
+                    <i style="font-size:25px" class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- sidebar ends here -->
+
+	<!-- main container starts here -->
+	<div class="page-content-toggle" id="page-content-wrapper">
+        <div class="container-fluid">
+
+            <!-- 1st row starts here -->
+            <div class="row m-b-2">
+                <div class="col-lg-2">
+                    <div class="card card-block">
+                        <div class="col-lg-3" id="total-groups"></div>
+                        <div class="col-lg-9">Total Groups</div>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="card card-block">
+                        <div class="col-lg-3" id="total-agents"></div>
+                        <div class="col-lg-9">Total Agents</div>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="card card-block">
+                        <div class="col-lg-3" id="in-call-agents"></div>
+                        <div class="col-lg-9">In-call Agents</div>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="card card-block">
+                        <div class="col-lg-3" id="online-agents"></div>
+                        <div class="col-lg-8">Online Agents</div>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="card card-block">
+                        <div class="col-lg-3" id="busy-agents"></div>
+                        <div class="col-lg-9">Busy Agents</div>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="card card-block">
+                        <div class="col-lg-3" id="free-agents"></div>
+                        <div class="col-lg-9">Free Agents</div>
+                    </div>
+                </div>
+            </div>
+			<br><br>
+            <!-- /1st row ends here -->
+
+            <!-- 2nd row starts here -->
+            <div class="row m-b-2">
+                <div class="col-lg-4">
+                    <div class="card card-block">
+                        <h4 class="card-title">CPU Usage</h4>
+                        <div id="cpu-usage"></div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card card-block">
+                        <h4 class="card-title">Current Ram Usage</h4>
+                        <div id="ram-usage"></div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card card-block">
+                        <h4 class="card-title">File System</h4>
+                        <div id="file-system"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- /2nd row ends here -->
+			<div class="col-lg-6">
+                    <div class="card card-block">
+                        <h4 class="card-title">Answered Calls</h4>
+                        <div id="acalls"></div>
+            </div>
+            </div>
+			<div class="col-lg-6">
+                    <div class="card card-block">
+                        <h4 class="card-title">Rejected Calls</h4>
+                        <div id="rcalls"></div>
+                    </div>
+            </div>
+			<!-- <div class="col-lg-4">
+                    <div class="card card-block">
+                        <h4 class="card-title">Cancelled Calls</h4>
+                        <div id="file-system"></div>
+                    </div>
+            </div> -->
+
+            {% placeholder content %}
+        </div>
+    </div>
+    <!-- main container ends here -->
+
+    <script src="/static/js/dashboard.page.js"></script>
+	
+    
+{% endblock content %}
